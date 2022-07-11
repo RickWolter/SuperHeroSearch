@@ -1,15 +1,15 @@
 //
-//  MainViewModel.swift
+//  CharacterSearchViewModel.swift
 //  DisneyTakeHome
 //
-//  Created by Rick W. on 7/4/22.
+//  Created by Rick W. on 7/10/22.
 //
 
 import Foundation
 import SwiftUI
 import Combine
 
-class MainViewModel: ObservableObject {
+class CharacterViewModel: ObservableObject {
   
   @Published var fetchedCharacters: [Character]? = nil
   @Published var searchQuery = ""
@@ -38,7 +38,7 @@ class MainViewModel: ObservableObject {
     let publicKey = "bcef02a63819df04b8fa913013e4568a"
     //let privateKey = "5b53459fba33e82de4ae470a758d0a8ed3f2121c"
     //let hash = MD5(data: "\(ts)\(privateKey)\(publicKey)")
-    //got this hash from online tool
+    //got this hash from an online tool (although not techincally a hash)
     let MD5HashString = "016a43cf34bab3d9f1862138b005ca8b"
     let domain = "https://gateway.marvel.com:443/v1/public/"
     let charactersQuery = "characters?nameStartsWith="
@@ -53,14 +53,14 @@ class MainViewModel: ObservableObject {
         return
       }
       
-      guard let APIData = data else{
+      guard let data = data else{
         print("no data found")
         return
       }
       
       do{
         
-        let characters = try JSONDecoder().decode(CharacterContainer.self, from: APIData)
+        let characters = try JSONDecoder().decode(CharacterContainer.self, from: data)
         
         DispatchQueue.main.async {
           
@@ -74,5 +74,5 @@ class MainViewModel: ObservableObject {
       }
     }
     .resume()
-  }
+  } //fetch characters
 }
