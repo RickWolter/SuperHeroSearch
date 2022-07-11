@@ -1,9 +1,13 @@
 # SuperHeroSearch
 
+This app allows the user to view marvel comics as well as seearch for specific comic book heros from Marvel.
 
-This is my Disney take home project. It was a lot of fun. Thanks for the opportunity.
 
-Libraries used:
+- The credentials for the Marvel API are hardcoded into the apps networking so youll only need to download, change your team, and run the app.
+
+- It was a lot of fun. Thanks for the opportunity.
+
+- Libraries used:
 
 SwiftUI
 Combine
